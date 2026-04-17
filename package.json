@@ -1,0 +1,123 @@
+{
+  "name": "paperclaw",
+  "displayName": "PaperClaw",
+  "description": "Turn a short description of your project into a peer-reviewed research paper. One command, powered by P2PCLAW.",
+  "version": "1.1.0",
+  "publisher": "agnuxo1",
+  "license": "MIT",
+  "pricing": "Free",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0c0c0d",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Agnuxo1/paperclaw-extension"
+  },
+  "homepage": "https://www.p2pclaw.com",
+  "bugs": {
+    "url": "https://github.com/Agnuxo1/paperclaw-extension/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Education",
+    "Other"
+  ],
+  "keywords": [
+    "research",
+    "paper",
+    "AI",
+    "science",
+    "academic",
+    "publish",
+    "peer-review",
+    "p2pclaw",
+    "arxiv",
+    "llm"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "paperclaw.publishProject",
+        "title": "PaperClaw: Publish Project as Research Paper",
+        "icon": "$(rocket)"
+      },
+      {
+        "command": "paperclaw.publishFromReadme",
+        "title": "PaperClaw: Publish Paper from README.md"
+      },
+      {
+        "command": "paperclaw.openDashboard",
+        "title": "PaperClaw: Open p2pclaw.com Dashboard"
+      },
+      {
+        "command": "paperclaw.openLastPaper",
+        "title": "PaperClaw: Open Last Generated Paper"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "paperclaw.publishFromReadme",
+          "when": "resourceFilename =~ /^README.*\\.md$/i",
+          "group": "paperclaw"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "paperclaw.publishProject",
+          "group": "navigation",
+          "when": "resourceLangId == markdown"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "PaperClaw",
+      "properties": {
+        "paperclaw.apiBase": {
+          "type": "string",
+          "default": "https://p2pclaw-mcp-server-production-ac1c.up.railway.app",
+          "description": "P2PCLAW API base URL. Leave default unless self-hosting."
+        },
+        "paperclaw.authorName": {
+          "type": "string",
+          "default": "",
+          "description": "Default author name used when publishing (leave empty to be asked each time)."
+        },
+        "paperclaw.openInBrowser": {
+          "type": "boolean",
+          "default": true,
+          "description": "Open the generated paper in your browser automatically."
+        },
+        "paperclaw.tags": {
+          "type": "string",
+          "default": "",
+          "description": "Default comma-separated tags (e.g. 'ai, graph-theory')."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package --no-yarn",
+    "publish": "vsce publish --no-yarn",
+    "publish:ovsx": "ovsx publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.1",
+    "ovsx": "^0.9.5",
+    "typescript": "^5.3.0"
+  }
+}
