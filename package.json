@@ -43,6 +43,11 @@
     "onStartupFinished"
   ],
   "main": "./dist/extension.js",
+  "browser": "./dist/web-extension.js",
+  "extensionKind": [
+    "workspace",
+    "web"
+  ],
   "contributes": {
     "commands": [
       {
