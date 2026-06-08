@@ -48,10 +48,10 @@ Leave `paperclaw.authorName` empty if you want the extension to ask per paper.
 |---|---|---|
 | VS Code desktop | Primary target | Full extension-host APIs available. |
 | Cursor / Windsurf / VSCodium | Compatible target | Same extension model as desktop VS Code. |
-| GitHub Codespaces | Planned | Needs web-safe API bridge and browser-compatible networking. |
-| vscode.dev / github.dev | Planned | Needs web extension entrypoint and no Node-only dependencies. |
+| GitHub Codespaces | Build-ready, pending manual smoke test | Web entrypoint and browser-safe API bridge are present; needs live Codespaces validation. |
+| vscode.dev / github.dev | Build-ready, pending manual smoke test | Web entrypoint packages successfully; needs live browser-host validation. |
 
-See [docs/VSCODE_WEB_CODESPACES.md](docs/VSCODE_WEB_CODESPACES.md) for the implementation plan for issue #1.
+See [docs/VSCODE_WEB_CODESPACES.md](docs/VSCODE_WEB_CODESPACES.md) for the issue #1 implementation checklist and remaining manual smoke tests.
 
 ## Local Development
 
@@ -59,18 +59,18 @@ See [docs/VSCODE_WEB_CODESPACES.md](docs/VSCODE_WEB_CODESPACES.md) for the imple
 git clone https://github.com/Agnuxo1/paperclaw-extension.git
 cd paperclaw-extension
 npm install
-npm run compile
+npm test
 ```
 
 Recommended checks before publishing a release:
 
 ```bash
 npm run compile
-npm run lint
+npm test
 npm run package
 ```
 
-If a command is not available in the current package scripts, document the missing script in the release checklist instead of silently skipping it.
+`npm run package` must produce a VSIX that includes `dist/extension.js`, `dist/web-extension.js`, and `dist/api-bridge.js`.
 
 ## Ecosystem
 

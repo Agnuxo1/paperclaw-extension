@@ -46,7 +46,7 @@
   "browser": "./dist/web-extension.js",
   "extensionKind": [
     "workspace",
-    "web"
+    "ui"
   ],
   "contributes": {
     "commands": [
@@ -113,6 +113,7 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
+    "test": "npm run compile && node --test test/*.test.js",
     "watch": "tsc -watch -p ./",
     "package": "vsce package --no-yarn",
     "publish": "vsce publish --no-yarn",
