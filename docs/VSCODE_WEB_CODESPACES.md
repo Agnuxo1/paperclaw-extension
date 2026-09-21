@@ -50,7 +50,7 @@ export interface PaperClawRuntime {
 
 - [x] Create `src/api-bridge.ts` with a `postJSON` helper and explicit timeout/error handling.
 - [x] Create `src/web-extension.ts` with the same command registrations as desktop.
-- [ ] Move command logic into a shared module that accepts a `PaperClawRuntime` object.
+- [x] Move command logic into a shared module that accepts a `PaperClawRuntime` object.
 - [x] Update `package.json` with a browser entrypoint if the extension build supports it.
 - [x] Keep `extensionKind` limited to VS Code Marketplace values (`workspace`, `ui`); web support is provided by the `browser` entrypoint.
 - [ ] Verify `PaperClaw: Publish Project as Research Paper` in Codespaces browser mode.
@@ -83,7 +83,7 @@ Manual smoke tests:
 Automated checks:
 
 - `npm test` compiles the extension and runs Node tests for `api-bridge.ts`.
-- Covered: successful JSON POST, server error envelopes, malformed JSON, unsupported URL protocols, and stalled-request timeout handling.
+- Covered: successful JSON POST, server error envelopes, malformed JSON, unsupported URL protocols, stalled-request timeout handling, and shared command-core validation.
 - `npm run package` compiles and packages a VSIX containing `dist/extension.js`, `dist/web-extension.js`, and `dist/api-bridge.js`.
 
 Automated checks still to add:

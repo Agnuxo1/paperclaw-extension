@@ -72,6 +72,8 @@ npm run package
 
 `npm run package` must produce a VSIX that includes `dist/extension.js`, `dist/web-extension.js`, and `dist/api-bridge.js`.
 
+GitHub Actions runs the same checks with read-only repository permissions and also verifies that production dependencies have no known npm audit findings.
+
 ## Ecosystem
 
 | Project | Role | Link |
