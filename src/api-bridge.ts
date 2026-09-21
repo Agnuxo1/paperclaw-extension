@@ -5,7 +5,7 @@ export interface JsonErrorEnvelope {
 
 export async function postJSON<T>(
   url: string,
-  body: Record<string, unknown>,
+  body: object,
   timeoutMs = 90_000,
 ): Promise<T> {
   let parsed: URL;
